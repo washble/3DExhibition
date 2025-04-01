@@ -28,6 +28,8 @@ public class PlayerMoveAttack : IMove
     {
         playerMoveController.playerState = PlayerState.Attack;
         MoveAnimation();
+        
+        if(!playerWeaponController.WeaponBase) { return; }
         playerWeaponController.WeaponBase.AttackStart(0);
         playerMoveController.AttackEnd();
     }
