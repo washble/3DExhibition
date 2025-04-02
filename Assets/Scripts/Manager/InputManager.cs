@@ -6,7 +6,7 @@ public class InputManager : Singleton<InputManager>
 {
 #region Events
 
-#if UNITY_STANDALONE
+#if UNITY_STANDALONE || UNITY_WEBGL
     public delegate void MovePerformedInput(Vector2 position, float time);
     public event MovePerformedInput OnMovePerformedInput;
     public delegate void MoveCanceledInput(Vector2 position, float time);
