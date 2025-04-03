@@ -3,11 +3,22 @@ using UnityEngine;
 [DefaultExecutionOrder(-1)]
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField] private bool useVsync = true;
+    
     protected override void Awake()
     {
         base.Awake();
-        
-        Application.targetFrameRate = 60;
+
+        // Temp vsync and targetFrameRate settings;
+        if (useVsync)
+        {
+            QualitySettings.vSyncCount = 1;
+        }
+        else
+        {
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 120;
+        }
     }
 
     [SerializeField] private GameObject player;
