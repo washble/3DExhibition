@@ -15,6 +15,7 @@ public class PlayerMoveRun : IMove
         playerAnimationController = PlayerAnimationController.Instance;
         
         navMeshAgent = playerMoveController.navMeshAgent;
+        navMeshAgent.updateRotation = false;
     }
     
     public void Move()
@@ -22,8 +23,8 @@ public class PlayerMoveRun : IMove
         playerMoveController.playerState = PlayerState.Run;
     
         Vector3 direction = playerMoveController.direction;
-        Vector3 scaledMovement = ScaleMovement(direction, playerMoveController.moveType);
-        Quaternion targetRotation = Quaternion.LookRotation(scaledMovement, Vector3.up);
+        (Vector3 scaledMovement, Quaternion targetRotation) = ScaleMovement(direction, playerMoveController.moveType);
+        
         navMeshAgent.transform.rotation = Quaternion.Slerp
         (
             navMeshAgent.transform.rotation, 
@@ -36,7 +37,7 @@ public class PlayerMoveRun : IMove
         MoveAnimation();
     }
 
-    private Vector3 ScaleMovement(Vector3 direction, PlayerMoveController.MoveType moveType)
+    private (Vector3, Quaternion) ScaleMovement(Vector3 direction, PlayerMoveController.MoveType moveType)
     {
         switch (moveType)
         {
@@ -46,24 +47,29 @@ public class PlayerMoveRun : IMove
                 return RelativeDirection(direction);
         }
 
-        return Vector3.zero;
+        return (Vector3.zero, Quaternion.identity);
     }
 
-    private Vector3 AbsoluteDirection(Vector3 direction)
+    private (Vector3, Quaternion) AbsoluteDirection(Vector3 direction)
     {
         Vector3 absoluteDirection = new Vector3(direction.x, 0, direction.y).normalized;
         Vector3 scaledMovement = navMeshAgent.speed * Time.deltaTime * absoluteDirection;
         
-        return scaledMovement;
+        Quaternion targetRotation = Quaternion.LookRotation(scaledMovement, Vector3.up);
+        
+        return (scaledMovement, targetRotation);
     }
     
-    private Vector3 RelativeDirection(Vector3 direction)
+    private (Vector3, Quaternion) RelativeDirection(Vector3 direction)
     {
         Vector3 relativeDirection 
             = navMeshAgent.transform.TransformDirection(new Vector3(direction.x, 0, direction.y)).normalized;
         Vector3 scaledMovement = navMeshAgent.speed * Time.deltaTime * relativeDirection;
         
-        return scaledMovement;
+        Quaternion targetRotation = Quaternion.LookRotation(
+            direction.y < 0 ? -scaledMovement : scaledMovement, Vector3.up);
+        
+        return (scaledMovement, targetRotation);
     }
 
     public void StartSpeedRunning()
