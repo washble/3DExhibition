@@ -70,7 +70,6 @@ public class PlayerMoveController : PlayerBase
     {
         direction = Vector2.zero;
         
-        MoveHold(false);
         curMove = moveIdle;
     }
     
@@ -118,6 +117,7 @@ public class PlayerMoveController : PlayerBase
 
     internal void AttackEnd()
     {
+        MoveHold(false);
         StateInit();
     }
     
