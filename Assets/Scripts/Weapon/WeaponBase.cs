@@ -19,22 +19,11 @@ public abstract class WeaponBase : MonoBehaviour
     // ================ [Attack State] ================ // 
     protected AttackState CurAttackState;
 
-    private CancellationTokenSource cts = new CancellationTokenSource();
-
     protected virtual void Start()
     {
         if(!weaponGrabTransform) { return; }
 
         SetWeaponGrabPosition(weaponGrabTransform, offset, Quaternion.Euler(rotation));
-    }
-
-    protected virtual void OnDestroy()
-    {
-        if (!cts.IsCancellationRequested)
-        {
-            cts.Cancel();
-            cts.Dispose();
-        }
     }
 
     public void SetWeaponGrabPosition(Transform targetTransforms, Vector3 offset, Quaternion rotation)
@@ -57,10 +46,9 @@ public abstract class WeaponBase : MonoBehaviour
     
     private async UniTaskVoid AttackChecking(int startDelayMilliSecond)
     {
-        if (cts.IsCancellationRequested) { return; }
-        CancellationToken token = cts!.Token;
+        if (destroyCancellationToken.IsCancellationRequested) { return; }
         
-        await UniTask.Delay(startDelayMilliSecond, cancellationToken: token);
+        await UniTask.Delay(startDelayMilliSecond, cancellationToken: destroyCancellationToken);
         
         WeaponAttackTypeSO.IAttackDetail[] attackDetails = CurWeaponAttackType.attackDetails;
         while (CurAttackState == AttackState.Attack)
@@ -72,7 +60,7 @@ public abstract class WeaponBase : MonoBehaviour
                     case AttackDetailType.Delay:
                         WeaponAttackTypeSO.DelayTime delayTime
                             = (WeaponAttackTypeSO.DelayTime)attackDetails[i];
-                        await UniTask.Delay(delayTime.delayMilliSecond, cancellationToken: token);
+                        await UniTask.Delay(delayTime.delayMilliSecond, cancellationToken: destroyCancellationToken);
                         break;
                     case AttackDetailType.AttackCount:
                         WeaponAttackTypeSO.AttackCount attackCount

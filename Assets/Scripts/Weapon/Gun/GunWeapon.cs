@@ -22,6 +22,7 @@ public class GunWeapon : WeaponBase
 
     protected override void Attack(int attackCount)
     {
+        Debug.Log(attackCount);
         GameObject bullet = WeaponSpwaner.Instance.GetWeapon(weaponType);
         bullet.transform.SetPositionAndRotation(
             fireTransform.position, fireTransform.rotation

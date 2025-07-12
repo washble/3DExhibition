@@ -36,7 +36,7 @@ public class PlayerMoveAttack : IMove
         MoveAnimation();
         
         if(!playerWeaponController.WeaponBase) { return; }
-        // playerWeaponController.WeaponBase.AttackStart(0);
+        playerWeaponController.WeaponBase.AttackStart(200);
     }
 
     private void AttackEnd()
