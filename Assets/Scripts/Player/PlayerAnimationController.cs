@@ -1,13 +1,15 @@
 using UnityEngine;
 
-
 public class PlayerAnimationController : Singleton<PlayerAnimationController>
 {
-    private InputManager inputManager;
     private Animator animator;
 
+    private readonly int Idle = Animator.StringToHash("Idle");
+    private readonly int Walking = Animator.StringToHash("Walking");
     private readonly int Running = Animator.StringToHash("Running");
     private readonly int Attack = Animator.StringToHash("Attack");
+
+    public AnimationSMBBase AttackSMB { get; private set; }
 
     protected override void Awake()
     {
@@ -17,16 +19,62 @@ public class PlayerAnimationController : Singleton<PlayerAnimationController>
         if (!animator)
         {
             enabled = false;
-            return;
         }
-        inputManager = InputManager.Instance;
+        
+        AttackSMB = animator.GetBehaviour<AttackSMB>();
+    }
+    
+    private void AnimationOnOff(int state)
+    {
+        animator.SetTrigger(state);
+    }
+
+    public void IdleStart()
+    {
+        AnimationOnOff(Idle);
+    }
+    
+    public void IdleStop()
+    {
+        IdleAnimationOnOff(false);
+    }
+    
+    private void IdleAnimationOnOff(bool value)
+    {
+        animator.SetBool(Idle, value);
+    }
+    
+    public void WalkStart()
+    {
+        if (!IsWalking())
+        {
+            AnimationOnOff(Walking);
+        }
+    }
+    
+    public void WalkStop()
+    {
+        if (IsWalking())
+        {
+            WalkingAnimationOnOff(false);
+        }
+    }
+    
+    private bool IsWalking()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).shortNameHash == Walking;
+    }
+    
+    private void WalkingAnimationOnOff(bool value)
+    {
+        animator.SetBool(Walking, value);
     }
     
     public void RunStart()
     {
         if (!IsRunning())
         {
-            RunningAnimationOnOff(true);
+            AnimationOnOff(Running);
         }
     }
 
@@ -40,7 +88,7 @@ public class PlayerAnimationController : Singleton<PlayerAnimationController>
 
     private bool IsRunning()
     {
-        return animator.GetBool(Running);
+        return animator.GetCurrentAnimatorStateInfo(0).shortNameHash == Running;
     }
     
     private void RunningAnimationOnOff(bool value)
@@ -50,10 +98,7 @@ public class PlayerAnimationController : Singleton<PlayerAnimationController>
 
     public void AttackStart()
     {
-        if (!IsRunning())
-        {
-            AttackAnimationOnOff(true);   
-        }   
+        AnimationOnOff(Attack);   
     }
 
     public void AttackEnd()
@@ -66,7 +111,7 @@ public class PlayerAnimationController : Singleton<PlayerAnimationController>
 
     private bool IsAttack()
     {
-        return animator.GetBool(Attack);
+        return animator.GetCurrentAnimatorStateInfo(0).shortNameHash == Attack;
     }
     
     private void AttackAnimationOnOff(bool value)

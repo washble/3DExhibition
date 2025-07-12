@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerMoveRun : IMove
+public class PlayerMoveWalk : IMove
 {
     private readonly PlayerMoveController playerMoveController;
     private readonly PlayerAnimationController playerAnimationController;
@@ -9,7 +9,7 @@ public class PlayerMoveRun : IMove
 
     private bool isSpeedRunning = false;
 
-    public PlayerMoveRun(PlayerMoveController playerMoveController)
+    public PlayerMoveWalk(PlayerMoveController playerMoveController)
     {
         this.playerMoveController = playerMoveController;
         playerAnimationController = PlayerAnimationController.Instance;
@@ -20,7 +20,15 @@ public class PlayerMoveRun : IMove
     
     public void Move()
     {
-        playerMoveController.playerState = PlayerState.Run;
+        if (playerMoveController.playerState != PlayerState.Run)
+        {
+            MoveAnimationWalk();
+            playerMoveController.playerState = PlayerState.Walk;
+        }
+        else
+        {
+            MoveAnimationRun();
+        }
     
         Vector3 direction = playerMoveController.direction;
         (Vector3 scaledMovement, Quaternion targetRotation) = ScaleMovement(direction, playerMoveController.moveType);
@@ -33,8 +41,6 @@ public class PlayerMoveRun : IMove
         );
         
         navMeshAgent.Move(scaledMovement);
-    
-        MoveAnimation();
     }
 
     private (Vector3, Quaternion) ScaleMovement(Vector3 direction, PlayerMoveController.MoveType moveType)
@@ -72,23 +78,12 @@ public class PlayerMoveRun : IMove
         return (scaledMovement, targetRotation);
     }
 
-    public void StartSpeedRunning()
+    private void MoveAnimationWalk()
     {
-        if(isSpeedRunning) { return; }
-
-        isSpeedRunning = true;
-        navMeshAgent.speed += playerMoveController.addRunSpeed;
+        playerAnimationController.WalkStart();
     }
-
-    public void StopSpeedRunning()
-    {
-        if(!isSpeedRunning) { return; }
-
-        isSpeedRunning = false;
-        navMeshAgent.speed -= playerMoveController.addRunSpeed;
-    }
-
-    private void MoveAnimation()
+    
+    private void MoveAnimationRun()
     {
         playerAnimationController.RunStart();
     }

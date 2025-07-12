@@ -15,7 +15,6 @@ public class PlayerMoveIdle : IMove
     {
         playerMoveController.playerState = PlayerState.Idle;
         
-        playerAnimationController.RunEnd();
-        playerAnimationController.AttackEnd();
+        playerAnimationController.IdleStart();
     }
 }

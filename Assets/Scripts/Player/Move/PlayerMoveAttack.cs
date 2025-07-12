@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,15 +24,23 @@ public class PlayerMoveAttack : IMove
 
         thisTransform = playerMoveController.transform;
         navMeshAgent = playerMoveController.navMeshAgent;
+        
+        playerAnimationController.AttackSMB.OnStateExitSubscribe(AttackEnd);
     }
     
     public void Move()
     {
         playerMoveController.playerState = PlayerState.Attack;
+        playerMoveController.MoveHold(true);
+        
         MoveAnimation();
         
         if(!playerWeaponController.WeaponBase) { return; }
-        playerWeaponController.WeaponBase.AttackStart(0);
+        // playerWeaponController.WeaponBase.AttackStart(0);
+    }
+
+    private void AttackEnd()
+    {
         playerMoveController.AttackEnd();
     }
 
