@@ -29,7 +29,6 @@ public class PlayerBulletVFX : MonoBehaviour
         {
             time += Time.deltaTime * sizeSpeed;
             float size = sizeAnimationCurve.Evaluate(time);
-            Debug.Log(size);
             bulletVFX.SetFloat(Size, size);
 
             await UniTask.Yield(destroyCancellationToken);
