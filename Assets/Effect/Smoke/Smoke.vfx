@@ -74,7 +74,7 @@ MonoBehaviour:
   blendMode: 1
   cullMode: 0
   zWriteMode: 0
-  zTestMode: 0
+  zTestMode: 3
   useAlphaClipping: 0
   generateMotionVector: 0
   excludeFromTUAndAA: 0
@@ -265,9 +265,9 @@ MonoBehaviour:
   uiBounds:
     serializedVersion: 2
     x: -381
-    y: -312
-    width: 2220
-    height: 2548
+    y: -241
+    width: 1520
+    height: 2477
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1

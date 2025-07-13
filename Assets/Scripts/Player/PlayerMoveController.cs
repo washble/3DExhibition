@@ -68,6 +68,8 @@ public class PlayerMoveController : PlayerBase
         direction = Vector2.zero;
         
         curMove = moveIdle;
+        
+        playerEffectController.RunSmokeStop();
     }
     
     private void Update()

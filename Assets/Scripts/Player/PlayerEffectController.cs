@@ -8,7 +8,7 @@ public class PlayerEffectController : MonoBehaviour
     
     private EffectSpawner effectSpawner;
 
-    private VisualEffect runSmokeEffect = null;
+    private VisualEffect runSmokeEffect;
     
     private void Start()
     {
@@ -21,21 +21,21 @@ public class PlayerEffectController : MonoBehaviour
     {
         GameObject runSmoke = effectSpawner.Get(EffectType.RunSmoke);
         runSmokeEffect = runSmoke.GetComponent<VisualEffect>();
-        runSmokeEffect.gameObject.SetActive(false);
+        runSmokeEffect.Stop();
     }
     
     public void RunSmokePlay()
     {
         runSmokeEffect.transform.SetPositionAndRotation(runSmokeTransform.position, runSmokeTransform.rotation);
         runSmokeEffect.transform.SetParent(runSmokeTransform, true);
-        runSmokeEffect.gameObject.SetActive(true);
         runSmokeEffect.Play();
     }
 
     public void RunSmokeStop()
     {
+        if(!runSmokeEffect) { return; }
+        
         runSmokeEffect.transform.SetParent(null, true);
-        runSmokeEffect.gameObject.SetActive(false);
         runSmokeEffect.Stop();
     }
 }
