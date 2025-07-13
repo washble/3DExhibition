@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 
@@ -10,12 +11,18 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
+        isUsed = true;
         FireStart().Forget();
 
         if (attackTypeSo.useLifeTime)
         {
             LifeTime().Forget();
         }
+    }
+
+    private void OnDisable()
+    {
+        isUsed = false;
     }
 
     private void RestoreBullet()
@@ -26,8 +33,6 @@ public class Bullet : MonoBehaviour
 
     private async UniTaskVoid FireStart()
     {
-        isUsed = true;
-        
         while (isUsed)
         {
             transform.Translate(Vector3.forward * Time.deltaTime * attackTypeSo.speed);

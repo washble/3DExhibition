@@ -166,7 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletVFX: {fileID: 2945535821047784575}
-  trailRenderer: {fileID: 3816789697397225730}
+  trailRenderers:
+  - {fileID: 3816789697397225730}
+  - {fileID: 5937117256931528910}
   sizeAnimationCurve:
     serializedVersion: 2
     m_Curve:
@@ -227,7 +229,7 @@ Transform:
   m_GameObject: {fileID: 2664782743596373523}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -375,7 +377,7 @@ Transform:
   m_GameObject: {fileID: 7665658616161131361}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.1, y: -0, z: 0}
+  m_LocalPosition: {x: 0.1, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []

@@ -1,4 +1,3 @@
-using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -6,7 +5,7 @@ using UnityEngine.VFX;
 public class PlayerBulletVFX : MonoBehaviour
 {
     [SerializeField] private VisualEffect bulletVFX;
-    [SerializeField] private TrailRenderer trailRenderer;
+    [SerializeField] private TrailRenderer[] trailRenderers;
     
     [SerializeField] private AnimationCurve sizeAnimationCurve;
     [SerializeField] private float sizeSpeed = 1;
@@ -16,20 +15,27 @@ public class PlayerBulletVFX : MonoBehaviour
     private void Awake()
     {
         if(!bulletVFX) { bulletVFX = GetComponent<VisualEffect>(); }
-        if(!trailRenderer) { trailRenderer = bulletVFX.GetComponentInChildren<TrailRenderer>(); }
+        if(trailRenderers.Length == 0) { trailRenderers = bulletVFX.GetComponentsInChildren<TrailRenderer>(); }
     }
 
     private void OnEnable()
     {
-        trailRenderer.enabled = true;
         LifetimeSize().Forget();
     }
 
     private void OnDisable()
     {
-        trailRenderer.enabled = false;
+        TrailRendererClear();
     }
 
+    private void TrailRendererClear()
+    {
+        for (int i = 0; i < trailRenderers.Length; i++)
+        {
+            trailRenderers[i].Clear();
+        }
+    }
+    
     private async UniTaskVoid LifetimeSize()
     {
         float time = 0;
