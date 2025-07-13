@@ -57,7 +57,10 @@ VisualEffect:
     m_Float:
       m_Array: []
     m_Vector2f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 2, y: 2}
+        m_Name: Orb Rotate Speed
+        m_Overridden: 1
     m_Vector3f:
       m_Array: []
     m_Vector4f:
@@ -312,8 +315,8 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.016464932, g: 0.102657124, b: 0.6981132, a: 1}
-      key1: {r: 0.15686187, g: 0.22648871, b: 0.7075472, a: 0.62647057}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key1: {r: 0.2956123, g: 0.3461495, b: 0.6886792, a: 0.69803923}
+      key2: {r: 0, g: 0, b: 0, a: 0.29411766}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -328,7 +331,7 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 43562
+      atime1: 43947
       atime2: 65535
       atime3: 65535
       atime4: 0
@@ -341,9 +344,9 @@ TrailRenderer:
       m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    textureScale: {x: 1.5, y: 1.5}
+    alignment: 1
+    textureMode: 3
+    textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
@@ -460,8 +463,8 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.016464932, g: 0.102657124, b: 0.6981132, a: 1}
-      key1: {r: 0.15686187, g: 0.22648871, b: 0.7075472, a: 0.62647057}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key1: {r: 0.2956123, g: 0.3461495, b: 0.6886792, a: 0.69803923}
+      key2: {r: 0, g: 0, b: 0, a: 0.29411766}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -476,7 +479,7 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 43562
+      atime1: 43947
       atime2: 65535
       atime3: 65535
       atime4: 0
@@ -489,9 +492,9 @@ TrailRenderer:
       m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    textureScale: {x: 1.5, y: 1.5}
+    alignment: 1
+    textureMode: 3
+    textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
