@@ -14,7 +14,7 @@ public class PlayerBulletVFX : MonoBehaviour
 
     private void Awake()
     {
-        if(!bulletVFX) { bulletVFX = GetComponent<VisualEffect>(); }
+        if(!bulletVFX) { TryGetComponent(out bulletVFX); }
         if(trailRenderers.Length == 0) { trailRenderers = bulletVFX.GetComponentsInChildren<TrailRenderer>(); }
     }
 

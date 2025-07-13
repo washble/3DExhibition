@@ -56,5 +56,6 @@ public enum WeaponType
 public enum EffectType
 {
     RunSmoke,
+    PlayerBulletHit,
     PlayerAttack,
 }

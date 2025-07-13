@@ -1,9 +1,8 @@
-using System;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 
 [RequireComponent(typeof(Collider))]
-public class Bullet : MonoBehaviour
+public class PlayerBullet : MonoBehaviour
 {
     [SerializeField] private BulletAttackTypeSO attackTypeSo;
 
@@ -23,6 +22,14 @@ public class Bullet : MonoBehaviour
     private void OnDisable()
     {
         isUsed = false;
+    }
+
+    private void HitBullet()
+    {
+        GameObject hitVFX = EffectSpawner.Instance.Get(EffectType.PlayerBulletHit);
+        hitVFX.transform.SetPositionAndRotation(transform.position, transform.rotation);
+        
+        RestoreBullet();
     }
 
     private void RestoreBullet()
@@ -61,10 +68,10 @@ public class Bullet : MonoBehaviour
         switch (other.gameObject.layer)
         {
             case (int)GameObjectLayer.Map:
-                RestoreBullet();
+                HitBullet();
                 break;
             case (int)GameObjectLayer.Player:
-                RestoreBullet();
+                HitBullet();
                 break;
         }
     }
