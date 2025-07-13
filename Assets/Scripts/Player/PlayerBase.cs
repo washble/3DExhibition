@@ -1,5 +1,9 @@
+using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(PlayerWeaponController))]
+[RequireComponent(typeof(PlayerEffectController))]
 public class PlayerBase : Singleton<PlayerBase>
 {
     protected InputManager inputManager;
@@ -8,6 +12,7 @@ public class PlayerBase : Singleton<PlayerBase>
     internal NavMeshAgent navMeshAgent;
     
     internal PlayerWeaponController playerWeaponController;
+    internal PlayerEffectController playerEffectController;
     
     protected override void Awake()
     {
@@ -19,5 +24,6 @@ public class PlayerBase : Singleton<PlayerBase>
         navMeshAgent = GetComponent<NavMeshAgent>();
         
         playerWeaponController = GetComponent<PlayerWeaponController>();
+        playerEffectController = GetComponent<PlayerEffectController>();
     }
 }

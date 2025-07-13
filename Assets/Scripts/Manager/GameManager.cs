@@ -52,3 +52,9 @@ public enum WeaponType
     CompanionShield,
     CompanionSword,
 }
+
+public enum EffectType
+{
+    RunSmoke,
+    PlayerAttack,
+}

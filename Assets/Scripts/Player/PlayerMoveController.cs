@@ -1,8 +1,5 @@
 using UnityEngine;
-using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(PlayerWeaponController))]
 public class PlayerMoveController : PlayerBase
 {
     internal Vector2 direction = Vector2.zero;
@@ -34,7 +31,7 @@ public class PlayerMoveController : PlayerBase
     [SerializeField] private bool isDebug = false;
     [SerializeField] private Color attackRadiusColor = new Color(1, 0, 0, 0.5f);
 #endif
-    
+
     private void OnEnable()
     {
         inputManager.OnMovePerformedInput += InputMovePerformed;
@@ -102,10 +99,7 @@ public class PlayerMoveController : PlayerBase
     {
         if(run < 1) { return; }
 
-        if(playerState == PlayerState.Run) { return; }
-        
-        playerState = PlayerState.Run;
-        navMeshAgent.speed += addRunSpeed;
+        Run();
     }
 
     private void InputAttackPerformed(float attack, float time)
@@ -113,6 +107,15 @@ public class PlayerMoveController : PlayerBase
         if(attack < 1) { return; }
         
         curMove = moveAttack;
+    }
+
+    private void Run()
+    {
+        if(playerState == PlayerState.Run) { return; }
+        
+        playerState = PlayerState.Run;
+        navMeshAgent.speed += addRunSpeed;
+        playerEffectController.RunSmokePlay();
     }
 
     internal void AttackEnd()

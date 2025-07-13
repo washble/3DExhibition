@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    [FormerlySerializedAs("weapon")]
     [Header("[Weapon]")] 
     [SerializeField] private WeaponBase weaponBase;
     internal WeaponBase WeaponBase => weaponBase;

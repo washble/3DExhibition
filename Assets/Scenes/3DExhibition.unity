@@ -899,6 +899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1773732492}
   - component: {fileID: 1773732493}
+  - component: {fileID: 1773732494}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -937,6 +938,22 @@ MonoBehaviour:
   spawnPrefabArray:
   - weaponType: 2
     prefab: {fileID: 325956097}
+--- !u!114 &1773732494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773732491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4adc10425f05b247af4197bbe2ba738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initCrateCount: 5
+  spawnPrefabArray:
+  - weaponType: 0
+    prefab: {fileID: 4501830574080017789, guid: 2b1a55fcb5031a040bb5d5738440b4df, type: 3}
 --- !u!1 &2132104690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1190,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5038489778876587003, guid: a5034b76621f6324c97ac37e1a966976, type: 3}
   m_PrefabInstance: {fileID: 528304042988738672}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &528304042988738674 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8454682650320768095, guid: a5034b76621f6324c97ac37e1a966976, type: 3}
+  m_PrefabInstance: {fileID: 528304042988738672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!195 &563505998413311846
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1335,6 +1357,7 @@ GameObject:
   - component: {fileID: 1129512230393331482}
   - component: {fileID: 8828614723314621136}
   - component: {fileID: 2994645355053869247}
+  - component: {fileID: 9009903513667593034}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -1772,6 +1795,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &9009903513667593034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552500433046661132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f613009451d2c7e48a8319af730d2f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSmokeTransform: {fileID: 528304042988738674}
 --- !u!4 &9033793284467929772
 Transform:
   m_ObjectHideFlags: 0
@@ -1831,6 +1867,6 @@ SceneRoots:
   - {fileID: 2132104692}
   - {fileID: 7443523389791823695}
   - {fileID: 8851657816315742429}
-  - {fileID: 9033793284467929772}
   - {fileID: 1773732492}
+  - {fileID: 9033793284467929772}
   - {fileID: 325956101}
