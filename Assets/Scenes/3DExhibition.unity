@@ -815,7 +815,7 @@ MonoBehaviour:
   initCrateCount: 5
   spawnPrefabArray:
   - weaponType: 2
-    prefab: {fileID: 7538530498374452014, guid: fe98bca2f01bffe4ea34e80e6450f953, type: 3}
+    prefab: {fileID: 2307970036239996901, guid: 835aa490014f514468f6eacce7cfdd30, type: 3}
 --- !u!114 &1773732494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1014,6 +1014,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7443523389791823695}
     m_Modifications:
+    - target: {fileID: 2038481800788610095, guid: a5034b76621f6324c97ac37e1a966976, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2038481800788610095, guid: a5034b76621f6324c97ac37e1a966976, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.255
+      objectReference: {fileID: 0}
+    - target: {fileID: 2038481800788610095, guid: a5034b76621f6324c97ac37e1a966976, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.23
+      objectReference: {fileID: 0}
     - target: {fileID: 5038489778876587003, guid: a5034b76621f6324c97ac37e1a966976, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

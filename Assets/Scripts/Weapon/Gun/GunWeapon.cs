@@ -26,7 +26,6 @@ public class GunWeapon : WeaponBase
         bullet.transform.SetPositionAndRotation(
             fireTransform.position, fireTransform.rotation
         );
-        bullet.SetActive(true);
     }
 
     public override void AttackStop()

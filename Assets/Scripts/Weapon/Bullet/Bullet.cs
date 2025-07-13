@@ -7,11 +7,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] private BulletAttackTypeSO attackTypeSo;
 
     private bool isUsed = false;
-    
+
     private void OnEnable()
     {
-        isUsed = true;
-        Fire().Forget();
+        FireStart().Forget();
 
         if (attackTypeSo.useLifeTime)
         {
@@ -19,17 +18,20 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    private void RestoreBullet()
     {
         isUsed = false;
+        WeaponSpwaner.Instance.RestoreWeapon(attackTypeSo.weaponType, gameObject);
     }
 
-    private async UniTaskVoid Fire()
+    private async UniTaskVoid FireStart()
     {
+        isUsed = true;
+        
         while (isUsed)
         {
             transform.Translate(Vector3.forward * Time.deltaTime * attackTypeSo.speed);
-            await UniTask.Yield(PlayerLoopTiming.Update);
+            await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken: destroyCancellationToken);
         }
     }
 
@@ -42,10 +44,10 @@ public class Bullet : MonoBehaviour
             duration += Time.deltaTime;
             if (duration > attackTypeSo.lifeTime)
             {
-                WeaponSpwaner.Instance.RestoreWeapon(attackTypeSo.weaponType, gameObject);
+                RestoreBullet();
             }
 
-            await UniTask.Yield(PlayerLoopTiming.Update);
+            await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken: destroyCancellationToken);
         }
     }
 
@@ -54,10 +56,10 @@ public class Bullet : MonoBehaviour
         switch (other.gameObject.layer)
         {
             case (int)GameObjectLayer.Map:
-                WeaponSpwaner.Instance.RestoreWeapon(attackTypeSo.weaponType, gameObject);
+                RestoreBullet();
                 break;
             case (int)GameObjectLayer.Player:
-                WeaponSpwaner.Instance.RestoreWeapon(attackTypeSo.weaponType, gameObject);
+                RestoreBullet();
                 break;
         }
     }

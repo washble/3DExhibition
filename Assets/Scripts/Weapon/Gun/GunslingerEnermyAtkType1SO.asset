@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDetails:
   - rid: 8511914592694173758
-  - rid: 8511914592694173759
   references:
     version: 2
     RefIds:
@@ -23,8 +22,3 @@ MonoBehaviour:
       data:
         attackDetailType: 1
         count: 1
-    - rid: 8511914592694173759
-      type: {class: WeaponAttackTypeSO/DelayTime, ns: , asm: Assembly-CSharp}
-      data:
-        attackDetailType: 0
-        delayMilliSecond: 2000
