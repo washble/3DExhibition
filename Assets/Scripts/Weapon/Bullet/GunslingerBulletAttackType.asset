@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GunslingerBulletAttackType
   m_EditorClassIdentifier: 
   weaponType: 2
-  speed: 20
+  speed: 40
   useLifeTime: 1
   lifeTime: 5
