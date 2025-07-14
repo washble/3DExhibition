@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3476599863721582229}
   - component: {fileID: 7592024593678896876}
   - component: {fileID: 7020466308133231959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OrbBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9043341427242686366}
   - component: {fileID: 3816789697397225730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1644251382510732129}
   - component: {fileID: 5937117256931528910}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
