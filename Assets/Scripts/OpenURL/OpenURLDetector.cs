@@ -1,12 +1,27 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class OpenURLDetector : MonoBehaviour
 {
-    [SerializeField] private readonly string url;
+    [SerializeField] private string url;
+
+    [TextArea][SerializeField] private string urlTile;
+
+    private void Awake()
+    {
+        if (TryGetComponent(out Collider thisCollider))
+        {
+            thisCollider.isTrigger = true;
+        }
+        else
+        {
+            enabled = false;
+        }
+    }
 
     private void ShowOpenURL()
     {
-        
+        Application.OpenURL(url);
     }
 
     private void HideOpenURL()
