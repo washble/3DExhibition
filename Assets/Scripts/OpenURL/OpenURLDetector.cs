@@ -21,12 +21,12 @@ public class OpenURLDetector : MonoBehaviour
 
     private void ShowOpenURL()
     {
-        Application.OpenURL(url);
+        URLDisplayGroup.Instance.ShowUrlDisplay(url, urlTile);
     }
 
     private void HideOpenURL()
     {
-        
+        URLDisplayGroup.Instance.HideUrlDisplay();
     }
 
     private void OpenURL()
