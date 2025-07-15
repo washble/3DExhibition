@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
         if (useVsync)
         {
             QualitySettings.vSyncCount = 1;
+            Application.targetFrameRate = 60;
         }
         else
         {
