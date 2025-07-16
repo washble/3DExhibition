@@ -22,11 +22,13 @@ public class WebGLVideoPlayerDetector : MonoBehaviour
 
     private void PlayVideo()
     {
+        SoundManager.Instance.PauseBackgroundSound();
         videoPlayer.Play();
     }
     
     private void StopVideo()
     {
+        SoundManager.Instance.PlayBackgroundSound();
         videoPlayer.Stop();
     }
 

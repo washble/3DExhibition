@@ -7,17 +7,23 @@ public class SoundManager : Singleton<SoundManager>
 
     private AudioClip tempDummyAudioClip;
     
-    private void PlaySound(AudioSource audioSource, AudioClip audioClip, bool oneShot = false)
+    private void PlaySound(AudioSource audioSource, AudioClip audioClip = null, bool oneShot = false)
     {
         if (!oneShot)
         {
-            audioSource.clip = audioClip;
+            if(audioClip is not null) { Debug.Log("hre"); audioSource.clip = audioClip; }
+            
             audioSource.Play();
         }
         else
         {
             audioSource.PlayOneShot(audioClip);
         }
+    }
+
+    private void PauseSound(AudioSource audioSource)
+    {
+        audioSource.Pause();
     }
     
     private void PlayStop(AudioSource audioSource)
@@ -27,7 +33,12 @@ public class SoundManager : Singleton<SoundManager>
     
     public void PlayBackgroundSound()
     {
-        PlaySound(backgroundAudioSource, tempDummyAudioClip);
+        PlaySound(backgroundAudioSource);
+    }
+
+    public void PauseBackgroundSound()
+    {
+        PauseSound(backgroundAudioSource);
     }
     
     public void StopBackgroundSound()
