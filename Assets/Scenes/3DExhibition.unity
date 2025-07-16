@@ -1038,6 +1038,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundAudioSource: {fileID: 2121044802}
   effectAudioSource: {fileID: 580326089}
+--- !u!1 &1191938128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1191938129}
+  - component: {fileID: 1191938130}
+  m_Layer: 0
+  m_Name: MouseCursorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1191938129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191938128}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8851657816315742429}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1191938130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191938128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412cdea8c43731348aba808624625e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicCursorInfo:
+    cursorImage: {fileID: 2800000, guid: f3c436c101e7eb64d8194db28a195226, type: 3}
+    resizeRatio: {x: 0.5, y: 0.5}
+    hotspotRatio: {x: 0.6, y: 0.6}
+    cursorMode: 1
+  selectCursorInfo:
+    cursorImage: {fileID: 0}
+    resizeRatio: {x: 0, y: 0}
+    hotspotRatio: {x: 0, y: 0}
+    cursorMode: 0
+  mouseEnterCursorInfo:
+    cursorImage: {fileID: 0}
+    resizeRatio: {x: 0, y: 0}
+    hotspotRatio: {x: 0, y: 0}
+    cursorMode: 0
 --- !u!1 &1232301126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3070,6 +3129,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1141329366}
+  - {fileID: 1191938129}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &9009903513667593033
