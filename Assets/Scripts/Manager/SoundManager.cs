@@ -5,13 +5,11 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private AudioSource backgroundAudioSource;
     [SerializeField] private AudioSource effectAudioSource;
 
-    private AudioClip tempDummyAudioClip;
-    
     private void PlaySound(AudioSource audioSource, AudioClip audioClip = null, bool oneShot = false)
     {
         if (!oneShot)
         {
-            if(audioClip is not null) { Debug.Log("hre"); audioSource.clip = audioClip; }
+            if(audioClip is not null) { audioSource.clip = audioClip; }
             
             audioSource.Play();
         }
@@ -46,9 +44,10 @@ public class SoundManager : Singleton<SoundManager>
         PlayStop(backgroundAudioSource);
     }
     
-    public void PlayEffectSound()
+    public void PlayEffectSound(AudioClip audioClip, Vector3 position)
     {
-        PlaySound(backgroundAudioSource, tempDummyAudioClip, true);
+        effectAudioSource.transform.position = position;
+        PlaySound(effectAudioSource, audioClip, true);
     }
     
     public void StopEffectSound()
