@@ -8,6 +8,14 @@
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 
 # Custom gitignore
+Assets/Download Assets
+Assets/Sound/Background1.mp3
+Assets/Sound/Background1.mp3.meta
+Assets/StreamingAssets/HalibutJubbs_Convert.mp4
+Assets/StreamingAssets/HalibutJubbs_Convert.mp4.meta
+Assets/Prefabs/BlueRabbit
+Assets/Prefabs/BlueRabbit.meta
+
 ###mergetool backupfile
 *.orig
 *.orig.meta
