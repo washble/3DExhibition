@@ -19,6 +19,10 @@ public abstract class PresenterBase<V, M> where V : class where M : class
     /// </summary>
     /// <param name="view">The view associated with this presenter.</param>
     /// <param name="model">The model associated with this presenter.</param>
+    /// 
+    /// Example usage:
+    /// public Presenter(View view) : base(view, new Model())
+    /// 
     protected PresenterBase(V view, M model)
     {
         View = view;
